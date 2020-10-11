@@ -1,1 +1,9 @@
- <label class="btn bg-primary">Filter:</label> <input type="text">
+<label class="btn bg-primary">Filter:</label>
+
+<!--
+  ngModel is the same as
+  <input type="text" [value]="filter" (input)="filter=$event.target.value" />
+  What is typed in textbox updates the filter : string.
+  When parent componenet changes filter : string, the text box value gets updated
+  -->
+<input type="text" [(ngModel)]="filter">

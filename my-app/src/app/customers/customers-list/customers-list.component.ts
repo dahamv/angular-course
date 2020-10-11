@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, SimpleChanges, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
 
 import { ICustomer } from 'src/app/shared/interfaces';
 
@@ -7,7 +7,7 @@ import { ICustomer } from 'src/app/shared/interfaces';
   templateUrl: './customers-list.component.html',
   styleUrls: ['./customers-list.component.scss']
 })
-export class CustomersListComponent implements OnInit ,  OnChanges{
+export class CustomersListComponent implements OnInit {
 
     //To store the original Customer array
     private _customers: ICustomer[] = [];
@@ -30,42 +30,34 @@ export class CustomersListComponent implements OnInit ,  OnChanges{
 
     }
 
+    filter(data: string) {
+      console.log('Filter called')
+      if (data) {
+          this.filteredCustomers = this.customers.filter((cust: ICustomer) => {
+              //Check if customers[] have what the use types in filter-textbox.
+              //If so assign the resutting filtered array to filteredCustomers array
+              return cust.name.toLowerCase().indexOf(data.toLowerCase()) > -1 ||
+                      cust.city.toLowerCase().indexOf(data.toLowerCase()) > -1 ||
+                      cust.orderTotal.toString().indexOf(data) > -1;
+          });
+          //Since filtered customeres array changed, recalculate orders.
+          this.calculateOrders();
+      } else {
+          this.filteredCustomers = this.customers;
+      }
+    }
+
     //Without using ngOnChange we can use getters and settes to create an input property 'customers'
-    @Input() get customers(): ICustomer[] {
+    // get is called when this.customers is called.
+    get customers(): ICustomer[] {
         return this._customers;
     }
 
-    set customers(value: ICustomer[]) {
+    //@input is needed since the parent componenet (customers) calls the set method as <app-customers-list [customers]="people" ..>
+    @Input() set customers(value: ICustomer[]) {
         if (value) {
             this.filteredCustomers = this._customers = value;
             this.calculateOrders();
-        }
-    }
-
-    //to see how ngOnChange works.
-    @Input() firstParentInput: number;
-    @Input() secondParentInput: number;
-    change1FromChild() {
-    this.firstParentInput -= 1;
-    }
-    change2FromChild() {
-    this.secondParentInput -= 1;
-    }
-    ngOnChanges(changes: SimpleChanges) {
-        for (const propName in changes) {
-            if (changes.hasOwnProperty(propName)) {
-            let change = changes[propName];
-            switch (propName) {
-                case 'firstParentInput': {
-                console.log(`firstParentInput changed to:`, change.currentValue);
-                break;
-                }
-                case 'secondParentInput': {
-                console.log(`secondParentInput changed to:`, change.currentValue);
-                break;
-                }
-            }
-            }
         }
     }
 }
