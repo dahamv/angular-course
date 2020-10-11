@@ -4,8 +4,7 @@ import { ICustomer } from 'src/app/shared/interfaces';
 
 @Component({
   selector: 'app-customers-list',
-  templateUrl: './customers-list.component.html',
-  styleUrls: ['./customers-list.component.scss']
+  templateUrl: './customers-list.component.html'
 })
 export class CustomersListComponent implements OnInit {
 
@@ -31,7 +30,6 @@ export class CustomersListComponent implements OnInit {
     }
 
     filter(data: string) {
-      console.log('Filter called')
       if (data) {
           this.filteredCustomers = this.customers.filter((cust: ICustomer) => {
               //Check if customers[] have what the use types in filter-textbox.
@@ -40,11 +38,11 @@ export class CustomersListComponent implements OnInit {
                       cust.city.toLowerCase().indexOf(data.toLowerCase()) > -1 ||
                       cust.orderTotal.toString().indexOf(data) > -1;
           });
-          //Since filtered customeres array changed, recalculate orders.
-          this.calculateOrders();
       } else {
           this.filteredCustomers = this.customers;
       }
+      //Since filtered customeres array changed, recalculate orders.
+          this.calculateOrders();
     }
 
     //Without using ngOnChange we can use getters and settes to create an input property 'customers'

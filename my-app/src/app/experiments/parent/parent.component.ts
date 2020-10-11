@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-experiments-parent',
-  templateUrl: './parent.component.html',
-  styleUrls: ['./parent.component.scss']
+  templateUrl: './parent.component.html'
 })
 export class ParentComponent implements OnInit {
 
@@ -28,4 +27,7 @@ export class ParentComponent implements OnInit {
   setValue() {
     this.name = 'Nancy';
   }
+
+  //To see how two way databinding works
+  fontSizePx = 16;
 }
