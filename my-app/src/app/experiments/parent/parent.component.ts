@@ -21,4 +21,11 @@ export class ParentComponent implements OnInit {
   change2FromParent(){
     this.data2 += 1;
   }
+
+  //To see how ngModel works
+  name: string = '';
+
+  setValue() {
+    this.name = 'Nancy';
+  }
 }

@@ -1,4 +1,5 @@
 <h2>Parent Componenet</h2>
+<h3>ngOnChange demo</h3>
 <div class="d-flex p-3 bg-secondary text-white">
   <div class="p-2 bg-info flex-fill">
     <a class="btn bg-secondary" (click)="change1FromParent()">Change 1 from parent</a>
@@ -11,6 +12,14 @@
     <app-child [firstParentInput]="data1" [secondParentInput]="data2"></app-child>
   </div>
 </div>
+
+<h3>ngModel demo</h3>
+<input [(ngModel)]="name" #ctrl="ngModel" required>
+
+<p>Value: {{ name }}</p>
+<p>Valid: {{ ctrl.valid }}</p>
+
+<button (click)="setValue()">Set value</button>
 
 
 
