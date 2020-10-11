@@ -5,8 +5,6 @@ import { ChildComponent } from './child/child.component';
 import { FormsModule } from '@angular/forms';
 import { SizerComponent } from './sizer/sizer.component';
 
-
-
 @NgModule({
   declarations: [ParentComponent, ChildComponent, SizerComponent],
   imports: [
