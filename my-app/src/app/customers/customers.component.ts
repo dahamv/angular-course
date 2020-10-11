@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ICustomer } from '../shared/interfaces';
 
 @Component({
   selector: 'app-customers',
@@ -8,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class CustomersComponent implements OnInit {
 
   title : string;
-  people : any[];
+  people : ICustomer[];
 
   constructor() { }
 
@@ -20,6 +21,16 @@ export class CustomersComponent implements OnInit {
           { id: 3, name: 'Michelle Thomas', city: 'Seattle', orderTotal: 99.99, customerSince: new Date(2002, 10, 31)},
           { id: 4, name: 'Jim Thomas', city: 'New York', orderTotal: 599.99, customerSince: new Date(2002, 10, 31)},
       ];
+  }
+
+  //To see how ngOnChange (in child componenet) works
+  data1 = 0;
+  data2 = 0;
+  change1FromParent(){
+    this.data1 += 1;
+  }
+  change2FromParent(){
+    this.data2 += 1;
   }
 
 }

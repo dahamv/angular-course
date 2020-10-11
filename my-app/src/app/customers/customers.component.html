@@ -1,2 +1,10 @@
 <h1>{{ title }}</h1>
-<app-customers-list></app-customers-list>
+<br/>
+<app-customers-list [customers]="people" [firstParentInput]="data1" [secondParentInput]="data2" ></app-customers-list>
+
+<br/>
+
+<a class="btn" (click)="change1FromParent()">Change 1 from parent</a>
+<br/>
+<a class="btn" (click)="change2FromParent()">Change 2 from parent</a>
+

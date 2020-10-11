@@ -4,6 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { CustomersModule } from './customers/customers.module'
 import { AppComponent } from './app.component';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { AppComponent } from './app.component';
     //This module provides directives.
     BrowserModule,
     AppRoutingModule,
-    CustomersModule
+    CustomersModule,
+    SharedModule
   ],
   providers: [],
   //main.ts tells angular to bootstrap the app module.
