@@ -15,6 +15,7 @@ import { ExperimentsModule } from './experiments/experiments.module';
   imports: [
     //This module provides directives.
     BrowserModule,
+    //Where the routes are defined.
     AppRoutingModule,
     //importing core module from app module is enough since its the root module.
     //No need other modules import core module.
