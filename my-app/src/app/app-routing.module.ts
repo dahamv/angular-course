@@ -1,18 +1,19 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { OrdersComponent } from './orders/orders.component';
 
 const routes: Routes = [
-    //The root(www.domain..) of the website should be redirected to /customers
+    // //The root(www.domain..) of the website should be redirected to /customers
     { path: '', pathMatch: 'full', redirectTo: '/customers'},
-    // domain/** should also be routed to /customers
-    { path: '**', pathMatch: 'full', redirectTo: '/customers' }
-    //You can also { path: '', pathMatch: 'full', component: MyComponent},
+    //{ path: 'orders/:id', component: OrdersComponent },
+    // // domain/** should also be routed to /customers
+    //{ path: '**', pathMatch: 'full', redirectTo: '/customers' }
 ];
 
 @NgModule({
   //You only call forRoot one time in an application.
   imports: [RouterModule.forRoot(routes)],
-   //So that any module which imports app-routing module has access to RouterModule.
+   //So that any module which imports app-routing module has access to RouterModule and use <router-outlet>
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

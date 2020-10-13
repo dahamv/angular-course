@@ -7,6 +7,7 @@ import { CustomersModule } from './customers/customers.module'
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { ExperimentsModule } from './experiments/experiments.module';
+import { OrdersModule } from './orders/orders.module';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { ExperimentsModule } from './experiments/experiments.module';
     //No need other modules import core module.
     CoreModule,
     CustomersModule,
+    OrdersModule,
     SharedModule,
     ExperimentsModule
   ],
