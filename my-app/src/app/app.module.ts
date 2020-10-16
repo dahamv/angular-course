@@ -16,15 +16,18 @@ import { OrdersModule } from './orders/orders.module';
   imports: [
     //This module provides directives.
     BrowserModule,
-    //Where the routes are defined.
-    AppRoutingModule,
+
     //importing core module from app module is enough since its the root module.
     //No need other modules import core module.
     CoreModule,
     CustomersModule,
     OrdersModule,
     SharedModule,
-    ExperimentsModule
+    ExperimentsModule,
+    //Where the routes are defined.
+    //IMPORTANT: ApproutingModule should be imported after the Customers and Orders Modules
+    //since those modules have child routes which can get overridden.
+    AppRoutingModule
   ],
   providers: [],
   //main.ts tells angular to bootstrap the app module.
